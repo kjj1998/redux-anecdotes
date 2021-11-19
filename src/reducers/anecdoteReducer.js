@@ -51,6 +51,7 @@ const increaseVote = (id) => {
 	}
 }
 
+/* Action creator to create new anecdote */
 const newAnecdote = (content) => {
 	return {
 		type: 'NEW_ANECDOTE',
