@@ -16,7 +16,8 @@ const AnecdoteList = (props) => {
 
 	return (
 		<div>
-			{anecdotes.map(anecdote =>
+			{anecdotes.map(anecdote => 
+				anecdote.shown ? 
 				<div key={anecdote.id}>
 					<div>
 						{anecdote.content}
@@ -26,6 +27,7 @@ const AnecdoteList = (props) => {
 						<button onClick={() => vote(anecdote)}>vote</button>
 					</div>
 				</div>
+				: null
 			)}
 		</div>
 	)
