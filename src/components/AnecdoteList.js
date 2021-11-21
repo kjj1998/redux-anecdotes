@@ -11,6 +11,7 @@ const AnecdoteList = (props) => {
 		dispatch(anecdoteReducer.increaseVote(anecdote.id))
 		dispatch(notificationReducer.increaseVoteNotification(anecdote.content))
     console.log('vote', anecdote.id)
+		setTimeout(() => dispatch(notificationReducer.reset()), 5000)
   }
 
 	return (
