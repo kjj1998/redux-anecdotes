@@ -1,24 +1,21 @@
-/*
-import { useDispatch, useSelector } from "react-redux"
+const initialFilterTerm = ''
 
-const reducer = (state='', action) => {
+const reducer = (state=initialFilterTerm, action) => {
 	switch(action.type) {
 		case 'FILTER': {
-
+			return action.data
 		}
 		default:
 			return state
 	}
 }
 
-const filterAnecdotes = (anecdotes) => {
+const filterAnecdotes = (text) => {
 	return {
 		type: 'FILTER',
-		data: anecdotes
+		data: text
 	}
 }
 
 const filterReducer = { reducer, filterAnecdotes }
-
 export default filterReducer
-*/

@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux'
 import anecdoteReducer from '../reducers/anecdoteReducer'
 import notificationReducer from '../reducers/notificationReducer'
 
-const AnecdoteForm = (props) => {
+const AnecdoteForm = () => {
 	const dispatch = useDispatch()
 
 	const addAnecdote = (event) => {

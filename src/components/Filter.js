@@ -1,15 +1,15 @@
 import React from 'react'
 import { useDispatch } from 'react-redux'
-import anecdoteReducer from '../reducers/anecdoteReducer'
+import filterReducer from '../reducers/filterReducer'
 
 
-const Filter = (props) => {
+const Filter = () => {
 	const dispatch = useDispatch()
 
 	const handleChange = (event) => {
 		event.preventDefault()
 		const filterTerm = event.target.value
-		dispatch(anecdoteReducer.filterAnecdotes(filterTerm))
+		dispatch(filterReducer.filterAnecdotes(filterTerm))
 	}
 	const style = {
 		marginBottom: 10

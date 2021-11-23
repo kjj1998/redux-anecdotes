@@ -14,7 +14,6 @@ const asObject = (anecdote) => {
     content: anecdote,
     id: getId(),
     votes: 0,
-		shown: true
   }
 }
 
@@ -23,8 +22,6 @@ const initialState = anecdotesAtStart.map(asObject)
 const byVotes = (a1, a2) => a2.votes - a1.votes
 
 const reducer = (state = initialState, action) => {
-  console.log('state now: ', state)
-  console.log('action', action)
 	switch(action.type) {
 		case 'VOTE': {
 			const id = action.data.id
@@ -38,23 +35,6 @@ const reducer = (state = initialState, action) => {
 		}
 		case 'NEW_ANECDOTE': {
 			return [...state, action.data]
-		}
-		case 'FILTER': {
-			const filteredAnecdotes = state.map(anecdote => {
-				if (action.data === '') {
-					anecdote.shown = true
-					return anecdote
-				}
-				else if (anecdote.content.toLowerCase().includes(action.data.toLowerCase())) {	
-					anecdote.shown = true
-					return anecdote
-				}
-				else {
-					anecdote.shown = false
-					return anecdote
-				} 
-			})
-			return filteredAnecdotes
 		}
 		default:
   		return state
@@ -81,14 +61,6 @@ const newAnecdote = (content) => {
 	}
 }
 
-const filterAnecdotes = (searchTerm) => {
-	return {
-		type: 'FILTER',
-		data: searchTerm
-	}
-}
-
-
-const anecdoteReducer = { reducer, increaseVote, newAnecdote, filterAnecdotes }
+const anecdoteReducer = { reducer, increaseVote, newAnecdote }
 
 export default anecdoteReducer

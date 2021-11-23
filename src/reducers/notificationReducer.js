@@ -1,8 +1,6 @@
 const initialNotification = ''
 
 const reducer = (state=initialNotification, action) => {
-	console.log('state now: ', state)
-  console.log('action', action)
 	switch(action.type) {
 		case 'VOTE_NOTIFICATION': {
 			return action.data
@@ -39,5 +37,4 @@ const reset = () => {
 }
 
 const notificationReducer = { reducer, increaseVoteNotification, createAnecdoteNotification, reset }
-
 export default notificationReducer
