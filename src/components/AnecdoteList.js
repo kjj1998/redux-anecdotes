@@ -29,9 +29,8 @@ const AnecdoteList = () => {
 	
   const vote = (anecdote) => {
 		dispatch(anecdoteReducer.increaseVote(anecdote))
-		dispatch(notificationReducer.setNotification(`you voted '${anecdote.content}'`))
+		dispatch(notificationReducer.setNotification(`you voted '${anecdote.content}'`, 5))
     console.log('vote', anecdote.id)
-		setTimeout(() => dispatch(notificationReducer.reset()), 5000)
   }
 
 	return (

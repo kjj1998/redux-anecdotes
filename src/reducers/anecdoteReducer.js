@@ -6,12 +6,6 @@ const reducer = (state = [], action) => {
 	switch(action.type) {
 		case 'VOTE': {
 			const votedAnecdote = action.data.votedAnecdote
-			/*
-			const anecdoteToIncreaseVote = state.find(anecdote => anecdote.id === id)
-			const changedAnecdote = {
-				...anecdoteToIncreaseVote,
-				votes: anecdoteToIncreaseVote.votes + 1
-			}*/
 			const updatedAnecdotes = state.map(
 				anecdote => anecdote.id !== votedAnecdote.id ? anecdote : votedAnecdote)
 			return updatedAnecdotes.sort(byVotes)

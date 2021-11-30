@@ -16,11 +16,14 @@ const reducer = (state=initialNotification, action) => {
 	}
 }
 
-const setNotification = (content) => {
-	return {
-		type: 'SET_NOTIFICATION',
-		data: content
-	}
+const setNotification = (content, time) => {
+	return async dispatch => {
+		dispatch({
+			type: 'SET_NOTIFICATION',
+			data: content
+		})
+		setTimeout(() => dispatch(reset()), time * 1000)
+	} 
 }
 
 const createAnecdoteNotification = (content) => {
@@ -31,8 +34,10 @@ const createAnecdoteNotification = (content) => {
 }
 
 const reset = () => {
-	return {
-		type: 'RESET',
+	return async dispatch => {
+		dispatch({
+			type: 'RESET',
+		})
 	}
 }
 
