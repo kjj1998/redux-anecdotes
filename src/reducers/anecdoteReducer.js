@@ -5,13 +5,15 @@ const byVotes = (a1, a2) => a2.votes - a1.votes
 const reducer = (state = [], action) => {
 	switch(action.type) {
 		case 'VOTE': {
-			const id = action.data.id
+			const votedAnecdote = action.data.votedAnecdote
+			/*
 			const anecdoteToIncreaseVote = state.find(anecdote => anecdote.id === id)
 			const changedAnecdote = {
 				...anecdoteToIncreaseVote,
 				votes: anecdoteToIncreaseVote.votes + 1
-			}
-			const updatedAnecdotes = state.map(anecdote => anecdote.id !== id ? anecdote : changedAnecdote)
+			}*/
+			const updatedAnecdotes = state.map(
+				anecdote => anecdote.id !== votedAnecdote.id ? anecdote : votedAnecdote)
 			return updatedAnecdotes.sort(byVotes)
 		}
 		case 'NEW_ANECDOTE': {
@@ -26,10 +28,17 @@ const reducer = (state = [], action) => {
 }
 
 /* Action creator to increase number of votes */
-const increaseVote = (id) => {
-	return {
-		type: 'VOTE',
-		data: { id }
+const increaseVote = (anecdote) => {
+	return async dispatch => {
+		const changedAnecdote = {
+			...anecdote,
+			votes: anecdote.votes + 1
+		}
+		const votedAnecdote = await anecdoteServices.updateAnecdote(changedAnecdote)
+		dispatch ({
+			type: 'VOTE',
+			data: { votedAnecdote }
+		})
 	}
 }
 
