@@ -20,7 +20,7 @@ const reducer = (state = [], action) => {
 			return [...state, action.data]
 		}
 		case 'INIT_ANECDOTES': {
-			return action.data
+			return action.data.sort(byVotes)
 		}
 		default:
   		return state
