@@ -2,7 +2,7 @@ const initialNotification = ''
 
 const reducer = (state=initialNotification, action) => {
 	switch(action.type) {
-		case 'VOTE_NOTIFICATION': {
+		case 'SET_NOTIFICATION': {
 			return action.data
 		}
 		case 'CREATE_NOTIFICATION': {
@@ -16,10 +16,10 @@ const reducer = (state=initialNotification, action) => {
 	}
 }
 
-const increaseVoteNotification = (content) => {
+const setNotification = (content) => {
 	return {
-		type: 'VOTE_NOTIFICATION',
-		data: `You voted for '${content}'`
+		type: 'SET_NOTIFICATION',
+		data: content
 	}
 }
 
@@ -36,5 +36,5 @@ const reset = () => {
 	}
 }
 
-const notificationReducer = { reducer, increaseVoteNotification, createAnecdoteNotification, reset }
+const notificationReducer = { reducer, setNotification, createAnecdoteNotification, reset }
 export default notificationReducer

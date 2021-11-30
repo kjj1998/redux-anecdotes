@@ -14,7 +14,7 @@ const AnecdoteForm = () => {
 
 		const newAnecdote = await anecdoteServices.createNew(content)
 		dispatch(anecdoteReducer.newAnecdote(newAnecdote))
-		dispatch(notificationReducer.createAnecdoteNotification(content))
+		dispatch(notificationReducer.setNotification(`new anecdote '${content}'`))
 
 		setTimeout(() => dispatch(notificationReducer.reset()), 5000)
 	}
