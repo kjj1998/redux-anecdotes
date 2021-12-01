@@ -16,13 +16,21 @@ const notificationReducer = (state=initialNotification, action) => {
 	}
 }
 
+const delay = time => new Promise((resolve, reject) => {
+	setTimeout(() => resolve('wait'), time)
+})
+
 export const setNotification = (content, time) => {
 	return async dispatch => {
+		
+		//const id = setTimeout(() => dispatch(reset()), time * 1000)
 		dispatch({
 			type: 'SET_NOTIFICATION',
 			data: content
 		})
-		setTimeout(() => dispatch(reset()), time * 1000)
+		await delay(time * 1000)
+		dispatch(reset())
+		
 	} 
 }
 
