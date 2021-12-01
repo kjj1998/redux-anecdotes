@@ -1,6 +1,6 @@
 const initialNotification = ''
 
-const reducer = (state=initialNotification, action) => {
+const notificationReducer = (state=initialNotification, action) => {
 	switch(action.type) {
 		case 'SET_NOTIFICATION': {
 			return action.data
@@ -16,7 +16,7 @@ const reducer = (state=initialNotification, action) => {
 	}
 }
 
-const setNotification = (content, time) => {
+export const setNotification = (content, time) => {
 	return async dispatch => {
 		dispatch({
 			type: 'SET_NOTIFICATION',
@@ -26,14 +26,14 @@ const setNotification = (content, time) => {
 	} 
 }
 
-const createAnecdoteNotification = (content) => {
+export const createAnecdoteNotification = (content) => {
 	return {
 		type: 'CREATE_NOTIFICATION',
 		data: `You added '${content}'`
 	}
 }
 
-const reset = () => {
+export const reset = () => {
 	return async dispatch => {
 		dispatch({
 			type: 'RESET',
@@ -41,5 +41,4 @@ const reset = () => {
 	}
 }
 
-const notificationReducer = { reducer, setNotification, createAnecdoteNotification, reset }
 export default notificationReducer

@@ -7,9 +7,9 @@ import notificationReducer from './reducers/notificationReducer'
 import filterReducer from './reducers/filterReducer'
 
 const reducer = combineReducers({
-	anecdotes: anecdoteReducer.reducer,
-	notification: notificationReducer.reducer,
-	filterTerm: filterReducer.reducer
+	anecdotes: anecdoteReducer,
+	notification: notificationReducer,
+	filterTerm: filterReducer
 })
 
 const store = createStore(
